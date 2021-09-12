@@ -26,7 +26,7 @@ namespace MonitoradorTempoOcioso
 
             if (idleTime < _totalIdleTime)
             {
-                Notify(idleTime);
+                Notify(_totalIdleTime);
                 _totalIdleTime = 0;
                 return;
             }
