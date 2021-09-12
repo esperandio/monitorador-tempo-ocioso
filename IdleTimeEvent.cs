@@ -5,12 +5,12 @@ namespace MonitoradorTempoOcioso
     struct IdleTimeEvent
     {
         public DateTime DateTime;
-        public uint SecondsIdle;
+        public uint MillisecondsIdle;
 
-        public IdleTimeEvent(DateTime dateTime, uint secondsIdle)
+        public IdleTimeEvent(DateTime dateTime, uint millisecondsIdle)
         {
             DateTime = dateTime;
-            SecondsIdle = secondsIdle;
+            MillisecondsIdle = millisecondsIdle;
         }
     }
 }
