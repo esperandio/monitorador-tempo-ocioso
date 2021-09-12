@@ -41,7 +41,10 @@ namespace MonitoradorTempoOcioso
 
         public void Stop()
         {
-            _timer.Dispose();
+            if (_timer != null)
+            {
+                _timer.Dispose();
+            }
         }
 
         private void Notify(uint idleTime)
