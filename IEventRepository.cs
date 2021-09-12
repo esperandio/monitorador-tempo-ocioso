@@ -1,4 +1,4 @@
-﻿namespace MonitoradorTempoOcioso
+﻿namespace MonitoramentoTempoOcioso
 {
     interface IEventRepository
     {

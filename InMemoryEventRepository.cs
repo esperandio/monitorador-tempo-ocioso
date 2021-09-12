@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MonitoradorTempoOcioso
+namespace MonitoramentoTempoOcioso
 {
     class InMemoryEventRepository : IEventRepository
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace MonitoradorTempoOcioso
+namespace MonitoramentoTempoOcioso
 {
     internal struct LASTINPUTINFO
     {

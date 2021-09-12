@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 
-namespace MonitoradorTempoOcioso
+namespace MonitoramentoTempoOcioso
 {
     class SQLiteEventRepository : IEventRepository
     {

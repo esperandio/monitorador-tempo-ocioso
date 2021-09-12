@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace MonitoradorTempoOcioso
+namespace MonitoramentoTempoOcioso
 {
     class TrayApplicationContext : ApplicationContext
     {

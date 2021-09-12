@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MonitoradorTempoOcioso
+namespace MonitoramentoTempoOcioso
 {
     struct IdleTimeEvent
     {
