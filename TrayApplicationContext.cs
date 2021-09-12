@@ -27,7 +27,7 @@ namespace MonitoradorTempoOcioso
 
             _notifyIcon.Visible = true;
 
-            _eventRepository = new InMemoryEventRepository();
+            _eventRepository = new SQLiteEventRepository();
             _idleTimeObserver = new IdleTimeObserver(_eventRepository);
         }
 
