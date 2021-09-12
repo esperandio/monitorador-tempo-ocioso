@@ -23,6 +23,8 @@ namespace MonitoradorTempoOcioso
             _notifyIcon.ContextMenuStrip.Items.Add("Pausar monitoramento", Image.FromFile("Resources/stop.ico"), OnStopClicked);
             _notifyIcon.ContextMenuStrip.Items.Add("Finalizar aplicação", null, OnExitClicked);
 
+            _notifyIcon.ContextMenuStrip.Items[1].Enabled = false;
+
             _notifyIcon.Visible = true;
 
             _eventRepository = new InMemoryEventRepository();
@@ -31,11 +33,21 @@ namespace MonitoradorTempoOcioso
 
         private void OnStartClicked(object sender, EventArgs e)
         {
+            _notifyIcon.ContextMenuStrip.Items[0].Enabled = false;
+            _notifyIcon.ContextMenuStrip.Items[1].Enabled = true;
+
+            _notifyIcon.Icon = new Icon("Resources/start.ico");
+
             _idleTimeObserver.Start();
         }
 
         private void OnStopClicked(object sender, EventArgs e)
         {
+            _notifyIcon.ContextMenuStrip.Items[0].Enabled = true;
+            _notifyIcon.ContextMenuStrip.Items[1].Enabled = false;
+
+            _notifyIcon.Icon = new Icon("Resources/stop.ico");
+
             _idleTimeObserver.Stop();
         }
 
