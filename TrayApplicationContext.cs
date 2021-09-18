@@ -29,6 +29,8 @@ namespace MonitoramentoTempoOcioso
 
             _eventRepository = new SQLiteEventRepository();
             _idleTimeWatcher = new IdleTimeWatcher(_eventRepository);
+
+            _eventRepository.Add(new StartApplicationEvent(DateTime.Now));
         }
 
         private void OnStartClicked(object sender, EventArgs e)
@@ -61,6 +63,8 @@ namespace MonitoramentoTempoOcioso
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
             );
+
+            _eventRepository.Add(new ExitApplicationEvent(DateTime.Now));
 
             Application.Exit();
         }
