@@ -8,7 +8,7 @@ namespace MonitoramentoTempoOcioso
     {
         private readonly NotifyIcon _notifyIcon;
         private readonly IEventRepository _eventRepository;
-        private readonly IdleTimeObserver _idleTimeObserver;
+        private readonly IdleTimeWatcher _idleTimeWatcher;
 
         public TrayApplicationContext()
         {
@@ -28,7 +28,7 @@ namespace MonitoramentoTempoOcioso
             _notifyIcon.Visible = true;
 
             _eventRepository = new SQLiteEventRepository();
-            _idleTimeObserver = new IdleTimeObserver(_eventRepository);
+            _idleTimeWatcher = new IdleTimeWatcher(_eventRepository);
         }
 
         private void OnStartClicked(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace MonitoramentoTempoOcioso
 
             _notifyIcon.Icon = new Icon("Resources/start.ico");
 
-            _idleTimeObserver.Start();
+            _idleTimeWatcher.Start();
         }
 
         private void OnStopClicked(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace MonitoramentoTempoOcioso
 
             _notifyIcon.Icon = new Icon("Resources/stop.ico");
 
-            _idleTimeObserver.Stop();
+            _idleTimeWatcher.Stop();
         }
 
         private void OnExitClicked(object sender, EventArgs e)
