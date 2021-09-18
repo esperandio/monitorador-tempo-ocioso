@@ -23,7 +23,7 @@ namespace MonitoramentoTempoOcioso
 
         private void TimerCallback(Object o)
         {
-            uint idleTime = IdleTimeFinder.GetIdleTime();
+            uint idleTime = UserInputInfo.GetIdleTime();
 
             if (idleTime < _totalIdleTime)
             {
