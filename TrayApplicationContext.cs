@@ -58,7 +58,7 @@ namespace MonitoramentoTempoOcioso
             _notifyIcon.Dispose();
 
             _ = MessageBox.Show(
-                "Quantidade de vezes ocioso: " + _eventRepository.Count().ToString(),
+                "Quantidade de eventos registrados: " + _eventRepository.Count().ToString(),
                 "Status",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
