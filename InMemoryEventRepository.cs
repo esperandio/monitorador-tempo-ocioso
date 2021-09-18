@@ -4,21 +4,21 @@ namespace MonitoramentoTempoOcioso
 {
     class InMemoryEventRepository : IEventRepository
     {
-        private readonly List<IdleTimeEvent> _idleEvents;
+        private readonly List<IEvent> _events;
 
         public InMemoryEventRepository()
         {
-            _idleEvents = new List<IdleTimeEvent>();
+            _events = new List<IEvent>();
         }
 
-        public void Add(IdleTimeEvent idleEvent)
+        public void Add(IEvent @event)
         {
-            _idleEvents.Add(idleEvent);
+            _events.Add(@event);
         }
 
         public int Count()
         {
-            return _idleEvents.Count;
+            return _events.Count;
         }
     }
 }

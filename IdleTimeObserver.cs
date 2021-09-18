@@ -17,6 +17,7 @@ namespace MonitoramentoTempoOcioso
 
         public void Start()
         {
+            _eventRepository.Add(new StartEvent(DateTime.Now));
             _timer = new Timer(TimerCallback, null, 0, 1000);
         }
 
@@ -41,6 +42,8 @@ namespace MonitoramentoTempoOcioso
 
         public void Stop()
         {
+            _eventRepository.Add(new StopEvent(DateTime.Now));
+
             if (_timer != null)
             {
                 _timer.Dispose();
