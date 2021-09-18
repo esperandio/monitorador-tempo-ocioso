@@ -2,11 +2,11 @@
 
 namespace MonitoramentoTempoOcioso
 {
-    struct StartEvent : IEvent
+    struct StartWatcherEvent : IEvent
     {
         public DateTime DateTime;
 
-        public StartEvent(DateTime dateTime)
+        public StartWatcherEvent(DateTime dateTime)
         {
             DateTime = dateTime;
         }
@@ -14,7 +14,7 @@ namespace MonitoramentoTempoOcioso
         public string SerializeObject()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(new {
-                ds_event = "StartEvent",
+                ds_event = "StartWatcherEvent",
                 dt_event = DateTime.ToString("yyyy-MM-dd HH:mm:ss")
             });
         }
