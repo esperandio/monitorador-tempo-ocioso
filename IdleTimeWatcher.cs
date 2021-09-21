@@ -3,26 +3,27 @@ using System.Threading;
 
 namespace MonitoramentoTempoOcioso
 {
-    class IdleTimeObserver
+    class IdleTimeWatcher
     {
         private Timer _timer;
         private readonly IEventRepository _eventRepository;
         private uint _totalIdleTime = 0;
         private readonly uint _maxIdleTimeAllowed = 5000;
 
-        public IdleTimeObserver(IEventRepository eventRepository)
+        public IdleTimeWatcher(IEventRepository eventRepository)
         {
             _eventRepository = eventRepository;
         }
 
         public void Start()
         {
+            _eventRepository.Add(new StartWatcherEvent(DateTime.Now));
             _timer = new Timer(TimerCallback, null, 0, 1000);
         }
 
         private void TimerCallback(Object o)
         {
-            uint idleTime = IdleTimeFinder.GetIdleTime();
+            uint idleTime = UserInputInfo.GetIdleTime();
 
             if (idleTime < _totalIdleTime)
             {
@@ -41,6 +42,8 @@ namespace MonitoramentoTempoOcioso
 
         public void Stop()
         {
+            _eventRepository.Add(new StopWatcherEvent(DateTime.Now));
+
             if (_timer != null)
             {
                 _timer.Dispose();

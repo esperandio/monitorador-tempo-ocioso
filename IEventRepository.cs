@@ -2,7 +2,7 @@
 {
     interface IEventRepository
     {
-        void Add(IdleTimeEvent idleEvent);
+        void Add(IEvent @event);
         int Count();
     }
 }

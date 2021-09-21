@@ -2,7 +2,7 @@
 
 namespace MonitoramentoTempoOcioso
 {
-    struct IdleTimeEvent
+    struct IdleTimeEvent : IEvent
     {
         public DateTime DateTime;
         public uint MillisecondsIdle;
@@ -11,6 +11,15 @@ namespace MonitoramentoTempoOcioso
         {
             DateTime = dateTime;
             MillisecondsIdle = millisecondsIdle;
+        }
+
+        public string SerializeObject()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(new { 
+                ds_event = "IdleTimeEvent",
+                dt_event = DateTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                nr_milliseconds_idle = MillisecondsIdle
+            });
         }
     }
 }

@@ -21,29 +21,27 @@ namespace MonitoramentoTempoOcioso
             using var command = _sqliteConnection.CreateCommand();
 
             command.CommandText = @"
-                CREATE TABLE IF NOT EXISTS events (
-	                id INTEGER PRIMARY KEY AUTOINCREMENT,
-	                dt_event DATETIME,
-                    nr_milliseconds_idle INTEGER
-                );
+                 CREATE TABLE IF NOT EXISTS events (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ds_event TEXT
+                 );
             ";
 
             command.ExecuteNonQuery();
         }
 
-        public void Add(IdleTimeEvent idleEvent)
+        public void Add(IEvent @event)
         {
             using var command = _sqliteConnection.CreateCommand();
 
             command.CommandText = @"
                 INSERT INTO events
-                    (dt_event, nr_milliseconds_idle) 
+                    (ds_event) 
                 VALUES
-                    (@dt_event, @nr_milliseconds_idle);
+                    (@ds_event);
             ";
 
-            command.Parameters.AddWithValue("@dt_event", idleEvent.DateTime.ToString("yyyy-MM-dd HH:mm:ss"));
-            command.Parameters.AddWithValue("@nr_milliseconds_idle", idleEvent.MillisecondsIdle);
+            command.Parameters.AddWithValue("@ds_event", @event.SerializeObject());
 
             command.ExecuteNonQuery();
         }

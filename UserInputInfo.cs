@@ -9,7 +9,7 @@ namespace MonitoramentoTempoOcioso
         public uint dwTime;
     }
 
-    abstract class IdleTimeFinder
+    abstract class UserInputInfo
     {
         [DllImport("User32.dll")]
         private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
