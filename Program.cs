@@ -16,7 +16,16 @@ namespace MonitoramentoTempoOcioso
             var flagAuthorizationRequired = ConfigurationManager.AppSettings["AuthorizationRequired"];
 
             if (flagAuthorizationRequired != null && flagAuthorizationRequired.Equals("true")) {
-                Application.Run(new LoginForm());
+                using (var loginForm = new LoginForm())
+                {
+                    var result = loginForm.ShowDialog();
+
+                    if (result != DialogResult.OK)
+                    {
+                        return;
+                    }
+                }
+
                 return;
             }
 

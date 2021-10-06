@@ -43,7 +43,7 @@ namespace MonitoramentoTempoOcioso
 
                 AuthenticatedUser user = await AuthenticatedUser.AuthenticateAsync(userName, password);
 
-                MessageBox.Show(user.Identifier());
+                this.DialogResult = DialogResult.OK;
 
                 Close();
             }
