@@ -16,6 +16,7 @@ namespace MonitoramentoTempoOcioso
 
         public static async Task<AuthenticatedUser> AuthenticateAsync(string userName, string password)
         {
+            /* TODO */
             var response = await s_client.PostAsync(
                 "http://api.webhookinbox.com/i/Ej4GswP8/in/",
                 new StringContent(
