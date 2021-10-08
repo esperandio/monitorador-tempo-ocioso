@@ -6,6 +6,8 @@ namespace MonitoramentoTempoOcioso
 {
     public partial class LoginForm : Form
     {
+        public AuthenticatedUser authenticatedUser;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace MonitoramentoTempoOcioso
             {
                 btnLogin.Enabled = false;
 
-                AuthenticatedUser user = await AuthenticatedUser.AuthenticateAsync(userName, password);
+                authenticatedUser = await AuthenticatedUser.AuthenticateAsync(userName, password);
 
                 this.DialogResult = DialogResult.OK;
 
