@@ -13,6 +13,8 @@ namespace MonitoramentoTempoOcioso
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            IUser currentUser = new LocalUser();
+
             var flagAuthorizationRequired = ConfigurationManager.AppSettings["AuthorizationRequired"];
 
             if (flagAuthorizationRequired != null && flagAuthorizationRequired.Equals("true")) {
@@ -24,12 +26,12 @@ namespace MonitoramentoTempoOcioso
                     {
                         return;
                     }
-                }
 
-                return;
+                    currentUser = loginForm.authenticatedUser;
+                }
             }
 
-            Application.Run(new TrayApplicationContext());
+            Application.Run(new TrayApplicationContext(currentUser));
         }
     }
 }

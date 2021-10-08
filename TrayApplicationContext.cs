@@ -9,9 +9,11 @@ namespace MonitoramentoTempoOcioso
         private readonly NotifyIcon _notifyIcon;
         private readonly IEventRepository _eventRepository;
         private readonly IdleTimeWatcher _idleTimeWatcher;
+        private readonly IUser _user;
 
-        public TrayApplicationContext()
+        public TrayApplicationContext(IUser user)
         {
+            _user = user;
             _notifyIcon = new NotifyIcon
             {
                 Icon = new Icon("Resources/default.ico"),
