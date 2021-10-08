@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace MonitoramentoTempoOcioso
 {
-    class AuthenticatedUser : IUser
+    public class AuthenticatedUser : IUser
     {
         private static readonly HttpClient s_client = new HttpClient();
         private readonly string _userName;
@@ -17,7 +17,7 @@ namespace MonitoramentoTempoOcioso
         public static async Task<AuthenticatedUser> AuthenticateAsync(string userName, string password)
         {
             var response = await s_client.PostAsync(
-                "http://api.webhookinbox.com/i/3D6Ae5qt/in/",
+                "http://api.webhookinbox.com/i/Ej4GswP8/in/",
                 new StringContent(
                     Newtonsoft.Json.JsonConvert.SerializeObject(
                         new {
