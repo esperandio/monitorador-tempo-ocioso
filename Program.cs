@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace MonitoramentoTempoOcioso
@@ -11,7 +12,26 @@ namespace MonitoramentoTempoOcioso
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrayApplicationContext());
+
+            IUser currentUser = new LocalUser();
+
+            var flagAuthorizationRequired = ConfigurationManager.AppSettings["AuthorizationRequired"];
+
+            if (flagAuthorizationRequired != null && flagAuthorizationRequired.Equals("true")) {
+                using (var loginForm = new LoginForm())
+                {
+                    var result = loginForm.ShowDialog();
+
+                    if (result != DialogResult.OK)
+                    {
+                        return;
+                    }
+
+                    currentUser = loginForm.authenticatedUser;
+                }
+            }
+
+            Application.Run(new TrayApplicationContext(currentUser));
         }
     }
 }
