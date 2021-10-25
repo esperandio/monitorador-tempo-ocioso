@@ -62,6 +62,11 @@ namespace MonitoramentoTempoOcioso.Forms
 
         private void OnExitClicked(object sender, EventArgs e)
         {
+            if (_idleTimeWatcher.IsRunning())
+            {
+                _idleTimeWatcher.Stop();
+            }
+
             _notifyIcon.Dispose();
 
             _ = MessageBox.Show(

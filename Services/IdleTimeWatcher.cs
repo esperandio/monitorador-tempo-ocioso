@@ -52,6 +52,11 @@ namespace MonitoramentoTempoOcioso.Services
             }
         }
 
+        public bool IsRunning()
+        {
+            return _timer != null;
+        }
+
         private void Notify(uint idleTime)
         {
             _eventRepository.Add(new IdleTimeEvent(DateTime.Now, idleTime));
