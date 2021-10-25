@@ -29,7 +29,7 @@ namespace MonitoramentoTempoOcioso.Services
 
             if (idleTime < _totalIdleTime)
             {
-                Notify(_totalIdleTime);
+                PersistNewIdleTimeEvent(_totalIdleTime);
                 _totalIdleTime = 0;
                 return;
             }
@@ -57,7 +57,7 @@ namespace MonitoramentoTempoOcioso.Services
             return _timer != null;
         }
 
-        private void Notify(uint idleTime)
+        private void PersistNewIdleTimeEvent(uint idleTime)
         {
             _eventRepository.Add(new IdleTimeEvent(DateTime.Now, idleTime));
         }
