@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using MonitoramentoTempoOcioso.Interfaces.Events;
+using System;
 
 namespace MonitoramentoTempoOcioso.Repositories.Events
 {
@@ -9,9 +10,11 @@ namespace MonitoramentoTempoOcioso.Repositories.Events
 
         public SQLiteEventRepository()
         {
+            string pathDataSourceFile = Environment.ExpandEnvironmentVariables(@"%appdata%\events.db");
+
             var connectionString = new SqliteConnectionStringBuilder()
             {
-                DataSource = @"C:\Temp\events.db",
+                DataSource = pathDataSourceFile,
                 Mode = SqliteOpenMode.ReadWriteCreate
             }.ToString();
 

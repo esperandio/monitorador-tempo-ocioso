@@ -34,7 +34,7 @@ namespace MonitoramentoTempoOcioso.Forms
 
             _notifyIcon.Visible = true;
 
-            _eventRepository = new InMemoryEventRepository();
+            _eventRepository = new SQLiteEventRepository();
             _idleTimeWatcher = new IdleTimeWatcher(_eventRepository);
 
             _eventRepository.Add(new StartApplicationEvent(DateTime.Now));
