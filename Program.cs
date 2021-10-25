@@ -1,6 +1,9 @@
 using System;
 using System.Configuration;
 using System.Windows.Forms;
+using MonitoramentoTempoOcioso.Entities.Users;
+using MonitoramentoTempoOcioso.Forms;
+using MonitoramentoTempoOcioso.Interfaces.Users;
 
 namespace MonitoramentoTempoOcioso
 {
