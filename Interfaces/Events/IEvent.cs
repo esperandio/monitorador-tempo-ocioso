@@ -1,4 +1,4 @@
-﻿namespace MonitoramentoTempoOcioso
+﻿namespace MonitoramentoTempoOcioso.Interfaces.Events
 {
     interface IEvent
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace MonitoramentoTempoOcioso
+namespace MonitoramentoTempoOcioso.Forms
 {
     partial class LoginForm
     {

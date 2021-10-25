@@ -1,3 +1,6 @@
+using MonitoramentoTempoOcioso.Entities.User;
+using MonitoramentoTempoOcioso.Forms;
+using MonitoramentoTempoOcioso.Interfaces.Users;
 using System;
 using System.Configuration;
 using System.Windows.Forms;
