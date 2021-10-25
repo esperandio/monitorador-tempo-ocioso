@@ -1,4 +1,4 @@
-using MonitoramentoTempoOcioso.Entities.User;
+using MonitoramentoTempoOcioso.Entities.Users;
 using MonitoramentoTempoOcioso.Forms;
 using MonitoramentoTempoOcioso.Interfaces.Users;
 using System;

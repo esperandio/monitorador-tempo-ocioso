@@ -1,7 +1,7 @@
 ﻿using MonitoramentoTempoOcioso.Interfaces.Users;
 using System;
 
-namespace MonitoramentoTempoOcioso.Entities.User
+namespace MonitoramentoTempoOcioso.Entities.Users
 {
     class LocalUser : IUser
     {

@@ -1,4 +1,4 @@
-﻿using MonitoramentoTempoOcioso.Entities.User;
+﻿using MonitoramentoTempoOcioso.Entities.Users;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;

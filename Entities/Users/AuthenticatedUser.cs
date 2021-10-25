@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonitoramentoTempoOcioso.Entities.User
+namespace MonitoramentoTempoOcioso.Entities.Users
 {
     public class AuthenticatedUser : IUser
     {
