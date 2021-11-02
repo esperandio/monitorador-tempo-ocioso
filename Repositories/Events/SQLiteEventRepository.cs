@@ -27,7 +27,8 @@ namespace MonitoramentoTempoOcioso.Repositories.Events
             command.CommandText = @"
                  CREATE TABLE IF NOT EXISTS events (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    ds_event TEXT
+                    ds_event TEXT,
+                    dt_sync TEXT
                  );
             ";
 
