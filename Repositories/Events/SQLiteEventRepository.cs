@@ -1,6 +1,9 @@
 ﻿using Microsoft.Data.Sqlite;
+using MonitoramentoTempoOcioso.Entities.Events;
+using MonitoramentoTempoOcioso.Factories;
 using MonitoramentoTempoOcioso.Interfaces.Events;
 using System;
+using System.Collections.Generic;
 
 namespace MonitoramentoTempoOcioso.Repositories.Events
 {
@@ -66,6 +69,34 @@ namespace MonitoramentoTempoOcioso.Repositories.Events
 
             reader.Read();
             return reader.GetInt32(0);
+        }
+
+        public List<IEvent> GetEventsToSync()
+        {
+            using var command = _sqliteConnection.CreateCommand();
+
+            command.CommandText = @"
+                SELECT 
+                    ds_event
+                FROM 
+                    events
+                WHERE
+                    dt_sync IS NULL;
+            ";
+
+            using var reader = command.ExecuteReader();
+
+            List<IEvent> eventsToSync = new List<IEvent>();
+
+            while (reader.Read())
+            {
+                EventDTO eventDTO = Newtonsoft.Json.JsonConvert.DeserializeObject<EventDTO>(reader.GetString(0));
+                IEvent @event = EventFactory.Create(eventDTO);
+
+                eventsToSync.Add(@event);
+            }
+
+            return eventsToSync;
         }
     }
 }
