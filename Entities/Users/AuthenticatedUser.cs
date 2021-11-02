@@ -8,23 +8,22 @@ namespace MonitoramentoTempoOcioso.Entities.Users
     public class AuthenticatedUser : IUser
     {
         private static readonly HttpClient s_client = new HttpClient();
-        private readonly string _userName;
+        private readonly string _token;
 
-        private AuthenticatedUser(string userName)
+        private AuthenticatedUser(string token)
         {
-            _userName = userName;
+            _token = token;
         }
 
         public static async Task<AuthenticatedUser> AuthenticateAsync(string userName, string password)
         {
-            /* TODO */
-            var response = await s_client.PostAsync(
-                "http://api.webhookinbox.com/i/Ej4GswP8/in/",
+            var response = await s_client.PutAsync(
+                "http://localhost:3334/login",
                 new StringContent(
                     Newtonsoft.Json.JsonConvert.SerializeObject(
                         new {
-                            ds_user_name = userName,
-                            ds_password = password
+                            email = userName,
+                            senha = password
                         }
                     ), 
                     Encoding.UTF8, 
@@ -34,14 +33,18 @@ namespace MonitoramentoTempoOcioso.Entities.Users
 
             response.EnsureSuccessStatusCode();
 
-            return new AuthenticatedUser(userName);
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<AuthenticatedUserData>(
+                response.Content.ReadAsStringAsync().Result
+            );
+
+            return new AuthenticatedUser(result.token);
         }
 
         public string Identifier()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(
                 new {
-                    ds_user_name = _userName
+                    token = _token
                 }
             );
         }
