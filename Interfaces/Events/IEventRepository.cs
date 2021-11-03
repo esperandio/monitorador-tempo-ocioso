@@ -2,7 +2,7 @@
 
 namespace MonitoramentoTempoOcioso.Interfaces.Events
 {
-    interface IEventRepository
+    public interface IEventRepository
     {
         void Add(IEvent @event);
         int Count();
