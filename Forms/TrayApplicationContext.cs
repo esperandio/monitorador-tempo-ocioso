@@ -28,6 +28,7 @@ namespace MonitoramentoTempoOcioso.Forms
 
             _notifyIcon.ContextMenuStrip.Items.Add("Iniciar monitoramento", Image.FromFile("Resources/start.ico"), OnStartClicked);
             _notifyIcon.ContextMenuStrip.Items.Add("Pausar monitoramento", Image.FromFile("Resources/stop.ico"), OnStopClicked);
+            _notifyIcon.ContextMenuStrip.Items.Add("Sincronizar", Image.FromFile("Resources/sync.ico"), OnSyncClicked);
             _notifyIcon.ContextMenuStrip.Items.Add("Finalizar aplicação", null, OnExitClicked);
 
             _notifyIcon.ContextMenuStrip.Items[1].Enabled = false;
@@ -58,6 +59,12 @@ namespace MonitoramentoTempoOcioso.Forms
             _notifyIcon.Icon = new Icon("Resources/stop.ico");
 
             _idleTimeWatcher.Stop();
+        }
+
+        private void OnSyncClicked(object sender, EventArgs e)
+        {
+            using var syncForm = new SyncForm(_eventRepository);
+            var result = syncForm.ShowDialog();
         }
 
         private void OnExitClicked(object sender, EventArgs e)

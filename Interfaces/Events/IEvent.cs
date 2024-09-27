@@ -1,6 +1,6 @@
 ﻿namespace MonitoramentoTempoOcioso.Interfaces.Events
 {
-    interface IEvent
+    public interface IEvent
     {
         string SerializeObject();
     }
